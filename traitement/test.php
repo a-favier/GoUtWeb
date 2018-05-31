@@ -1,13 +1,12 @@
 <?php
 include("../autoloader.php");
 
-$afavier = new User();
-$afavier->fillUserConnect('afavier', 's');
-
-var_dump($afavier);
 
 
-var_dump($afavier->putNames("Moniseur", "koro"));
+$event = new Event();
+$event->fillEventById(1);
+
+echo $event->getDateEnd();
 
 
 ?>

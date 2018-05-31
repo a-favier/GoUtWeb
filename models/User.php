@@ -69,79 +69,58 @@ class User extends RequestApi
         $apiReturn =  parent::sendRequest('event/user/' . $this->pseudo, methodType::GET, null, null, null);
         if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
             foreach ($apiReturn->getJsonList() as $e){
-                array_push($listEvent, $e['id'] = $e['name']);
+                $listEvent[$e['id']] = $e['name'];
             }
         }
         return $listEvent;
     }
 
-    public function putBorn($dateBorn){
-        if(!is_null($dateBorn)){
-            $body = array("dateBorn=". $dateBorn);
-            $apiReturn =  parent::sendRequest('user/born/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
-            if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
-                self::fillUserByJson($apiReturn->getJsonList()[0]);
-            }
-            return $apiReturn->getMessage();
-        }else{
-            return 'Date born can\'t be null';
+    public function setDateBorn($dateBorn){
+        $body = array("dateBorn=".$dateBorn);
+        $apiReturn =  parent::sendRequest('user/born/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
+        if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
+            $this->dateBorn = $dateBorn;
         }
+        return $apiReturn;
+
     }
 
-    public function putNames($firstName, $lastName){
-        if(!is_null($firstName) || !is_null($lastName) ){
-            $body = array();
-            if(!is_null($firstName)) array_push($body,"firstName=".$firstName);
-            if(!is_null($lastName)) array_push($body,"lastName=".$lastName);
-
-            $apiReturn =  parent::sendRequest('user/names/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
-            if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
-                self::fillUserByJson($apiReturn->getJsonList()[0]);
-            }
-            return $apiReturn->getMessage();
-        }else{
-            return 'Names can\'t be null';
+    public function setNames($firstName, $lastName){
+        $body = array();
+        array_push($body, "firstName=".$firstName);
+        array_push($body, "lastName=".$lastName);
+        $apiReturn =  parent::sendRequest('user/names/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
+        if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
+            $this->firstName = $firstName;
+            $this->lastName = $lastName;
         }
+        return $apiReturn;
     }
 
-    public function putMail($mail){
-        if(!is_null($mail)){
-            $body = array("mail=". $mail);
-            $apiReturn =  parent::sendRequest('user/mail/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
-            if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
-                self::fillUserByJson($apiReturn->getJsonList()[0]);
-            }
-            return $apiReturn->getMessage();
-        }else{
-            return 'mail can\'t be null';
+    public function setMail($mail){
+        $body = array("mail=".$mail);
+        $apiReturn =  parent::sendRequest('user/mail/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
+        if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
+            $this->mail = $mail;
         }
+        return $apiReturn;
     }
 
-    public function putPassword($pass){
-        if(!is_null($pass)){
-            $body = array("pass=". $pass);
-            $apiReturn =  parent::sendRequest('user/mail/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
-            if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
-                self::fillUserByJson($apiReturn->getJsonList()[0]);
-            }
-            return $apiReturn->getMessage();
-        }else{
-            return 'Password can\'t be null';
-        }
+    public function setPassword($pass){
+        $body = array("password=".$pass);
+        $apiReturn =  parent::sendRequest('user/password/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
+        return $apiReturn;
     }
 
-    public function putTel($tel){
-        if(!is_null($tel)){
-            $body = array("tel=". $tel);
-            $apiReturn =  parent::sendRequest('user/mail/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
-            if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
-                self::fillUserByJson($apiReturn->getJsonList()[0]);
-            }
-            return $apiReturn->getMessage();
-        }else{
-            return 'Tel can\'t be null';
+    public function setTel($tel){
+        $body = array("tel=".$tel);
+        $apiReturn =  parent::sendRequest('user/tel/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
+        if($apiReturn->isSucess() && !empty($apiReturn->getJsonList())){
+            $this->tel = $tel;
         }
+        return $apiReturn;
     }
+
 
     public function getPseudo()
     {

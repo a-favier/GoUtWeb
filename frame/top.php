@@ -24,7 +24,6 @@
                 header("Location: ../index.php");
             }
         }
-
         // Get page name
         $pageName = explode("/", $_SERVER['PHP_SELF']);
         $pageName = $pageName[count($pageName)-1];
@@ -39,7 +38,6 @@
             <ul class="nav navbar-nav">
                 <li <?php if($pageName == "accueil.php") echo "class='active'"?> ><a href="../pages/accueil.php">Home</a></li>
                 <li <?php if($pageName == "newEvent.php") echo "class='active'"?> ><a href="../pages/newEvent.php">new Event</a></li>
-                <li <?php if($pageName == "myEvents.php") echo "class='active'"?> ><a href="../pages/myEvents.php">my Events</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li <?php if($pageName == "settings.php") echo "class='active'"?> ><a href="../pages/settings.php"><span class="fa fa-cogs"></span></a></li>
@@ -48,4 +46,23 @@
         </div>
     </nav>
 
-    <body class="container-fluid">
+    <?php
+    if(isset($_SESSION['message'])){
+        if(isset($_SESSION['messageType'])){
+            echo "<div class='text-center col-lg-offset-4 col-lg-4 alert " . $_SESSION['messageType'] . " fade in my-alert'>";
+            echo "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+            echo $_SESSION['message'];
+            echo "</div>";
+            unset($_SESSION['messageType']);
+        }else{
+            echo "<div class='text-center col-lg-offset-4 col-lg-4 alert alert-warning fade in my-alert'>";
+            echo "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>";
+            echo $_SESSION['message'];
+            echo "</div>";
+        }
+        unset($_SESSION['message']);
+    }
+    ?>
+
+    <body>
+        <div class="container-fluid">
