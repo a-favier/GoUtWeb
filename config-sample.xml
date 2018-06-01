@@ -1,5 +1,6 @@
 <?xml version='1.0' standalone='yes'?>
-<API>
-    <adresse>localhost</adresse>
-    <port>3000</port>
-</API>
+<CONFIG>
+    <adresseApi></adresseApi>
+    <port></port>
+    <adresseMail></adresseMail>
+</CONFIG>

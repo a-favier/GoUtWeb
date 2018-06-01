@@ -16,9 +16,9 @@ class RequestApi
     public function __construct()
     {
         /** Creation de la chaine de connexion a l'API */
-        $api_config_xml = file_get_contents('../config.xml');
-        $api_config = new SimpleXMLElement($api_config_xml);
-        $this->strConnectApi = 'http://' . $api_config->adresse . ':' . $api_config->port . '/api/';
+        $config = file_get_contents('../config.xml');
+        $config = new SimpleXMLElement($config);
+        $this->strConnectApi = 'http://' . $config->adresseApi . ':' . $config->port . '/api/';
     }
 
     private function initCurl($strRequest, $method){

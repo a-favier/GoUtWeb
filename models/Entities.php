@@ -44,4 +44,9 @@ class Entities extends RequestApi
 
         return $listClientele;
     }
+
+    public function getUserByMail($mail){
+        return parent::sendRequest('user/mail/' . $mail, methodType::GET,null, null, null);
+
+    }
 }

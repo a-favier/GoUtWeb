@@ -1,5 +1,6 @@
 <?xml version='1.0' standalone='yes'?>
-<API>
-    <adresse>localhost</adresse>
+<CONFIG>
+    <adresseApi>localhost</adresseApi>
     <port>3000</port>
-</API>
+    <adresseMail>app.favier@gmail.com</adresseMail>
+</CONFIG>

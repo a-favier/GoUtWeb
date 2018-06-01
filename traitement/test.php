@@ -1,12 +1,10 @@
 <?php
 include("../autoloader.php");
 
+$enti = new Entities();
 
+$test = "afavier, moncul, tamère, ";
 
-$event = new Event();
-$event->fillEventById(1);
-
-echo $event->getDateEnd();
-
+echo (substr($test, 0 , -2));
 
 ?>

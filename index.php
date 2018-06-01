@@ -55,6 +55,7 @@ if(isset($_SESSION['me'])){
                         <label class="col-md-12 control-label" for="send"></label>
                         <div class="col-md-12">
                             <button id="send" name="send" class="btn btn-md btn-warning"><span class="glyphicon glyphicon-ok"></span> Envoyer</button>
+                            <a href="pages/aideConnexion.php" class="pull-right">Besoin d'aide pour vous connecter ?</a>
                         </div>
                     </div>
                 </fieldset>
@@ -79,6 +80,8 @@ if(isset($_SESSION['me'])){
             echo $_SESSION['info'];
             echo '</div>';
         }
+        unset($_SESSION['status']);
+        unset($_SESSION['info']);
     } ?>
 
     <!--Inscription-->

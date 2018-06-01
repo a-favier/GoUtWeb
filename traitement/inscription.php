@@ -1,10 +1,6 @@
 <?php
 include ("../autoloader.php");
-
 session_start();
-
-
-var_dump($_POST);
 
 $me = new User();
 

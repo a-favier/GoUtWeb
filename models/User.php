@@ -112,6 +112,11 @@ class User extends RequestApi
         return $apiReturn;
     }
 
+    public function resetPassword(){
+        $apiReturn =  parent::sendRequest('user/resetPassword/' . $this->pseudo, methodType::PUT, null, null, null);
+        return $apiReturn;
+    }
+
     public function setTel($tel){
         $body = array("tel=".$tel);
         $apiReturn =  parent::sendRequest('user/tel/' . $this->pseudo, methodType::PUT, $this->authToken, $body, null);
@@ -162,10 +167,7 @@ class User extends RequestApi
         return $this->apiReturn;
     }
 
-
-
     public function toString(){
         var_dump($this);
     }
-
 }
