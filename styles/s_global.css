@@ -1,5 +1,5 @@
 body{
-    background-color: #642b1c;
+    background-color: #DB901A;
 }
 
 .href-danger{
@@ -25,4 +25,8 @@ select{
     height: 34px;
     font-size: 15px;
     border-radius: 4px;
+}
+
+.strong{
+    font-weight: bold;
 }

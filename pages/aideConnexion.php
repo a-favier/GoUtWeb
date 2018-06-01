@@ -22,8 +22,11 @@ if(isset($_SESSION['me'])){
 
 <!--Titre-->
 <div class="row text-center">
-    <h1 class="well">GoUt</h1>
-    <h3 class="text-uppercase">Aide a la connexion</h3>
+    <a href="accueil.php">
+        <h1>
+            <img src="../img/gout-lg.png" class="hidden-sm hidden-xs" alt="GoUt"><img src="../img/gout-sm.png" class="hidden-lg hidden-md" alt="GoUt">
+        </h1>
+    </a>
 </div>
 
 <div class="row">

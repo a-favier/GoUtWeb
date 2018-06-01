@@ -21,9 +21,12 @@ if(isset($_SESSION['me'])){
 <body class="container-fluid">
 
     <!--Titre-->
-    <div class="row text-center">
-        <h1 class="well">GoUt</h1>
-        <h3 class="text-uppercase">faites connaitre votre événement !</h3>
+    <div class="text-center">
+        <a href="#">
+            <h1>
+                <img src="img/gout-lg.png" class="hidden-sm hidden-xs" alt="GoUt"><img src="img/gout-sm.png" class="hidden-lg hidden-md" alt="GoUt">
+            </h1>
+        </a>
     </div>
 
     <!--Connexion-->

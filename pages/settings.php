@@ -2,9 +2,9 @@
 require('../frame/top.php');
 $me = $_SESSION['me'];
 ?>
-<div class="container-fluid well">
+<div class="container-fluid well col-lg-offset-2 col-lg-8 col-sm-offset-1 col-sm-10 col-xs-12 table-responsive">
     <h1 class="text-center">Informations personnelles</h1>
-    <table class="table table-bordered table-striped table-condensed table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
         <thead>
         <tr>
             <th width="20%" class="text-center">Libel</th>

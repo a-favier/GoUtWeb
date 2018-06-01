@@ -24,11 +24,11 @@ $allClientele = $entities->getAllClientele();
 
 
 ?>
-    <div class="container-fluid">
-        <div class="row well">
+    <div class="container-fluid ">
+        <div class="well table-responsive">
             <h2 class="text-center">Nom de l'événement</h2>
 
-            <table class="table table-bordered table-striped table-condensed table-responsive">
+            <table class="table table-bordered table-striped table-condensed">
                 <tbody>
                     <tr>
                         <td class="text-center" width="50%">
@@ -68,12 +68,12 @@ $allClientele = $entities->getAllClientele();
                 </tbody>
             </table>
 
-            <table class="table table-bordered table-striped table-condensed table-responsive">
+            <table class="table table-bordered table-striped table-condensed">
                 <thead>
                 <tr>
                     <th width="10%" class="text-center">Catgorie</th>
                     <th width="10%" class="text-center">Libel</th>
-                    <th width="35%" class="text-center">Valeur</th>
+                    <th width="35%" class="text-center strong">Valeur</th>
                     <th width="35%" class="text-center">Modification</th>
                     <th width="10%" class="text-center">Action</th>
                 </tr>
@@ -82,7 +82,7 @@ $allClientele = $entities->getAllClientele();
                 <tr>
                     <td rowspan="2" class="text-center">Générale</td>
                     <td class="text-center">Name</td>
-                    <td class="text-center"><?php echo $event->getName()?></td>
+                    <td class="text-center strong"><?php echo $event->getName()?></td>
                     <form method="post" action="../traitement/actionEvent.php">
                         <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
                         <input name="action" type="hidden" value="namePut">
@@ -92,7 +92,7 @@ $allClientele = $entities->getAllClientele();
                 </tr>
                 <tr>
                     <td class="text-center">Description</td>
-                    <td class="text-center"><?php echo $event->getDescription()?></td>
+                    <td class="text-center strong"><?php echo $event->getDescription()?></td>
                     <form method="post" action="../traitement/actionEvent.php">
                         <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
                         <input name="action" type="hidden" value="descriptionPut">
@@ -104,7 +104,7 @@ $allClientele = $entities->getAllClientele();
                 <tr>
                     <td rowspan="2" class="text-center">Dates</td>
                     <td class="text-center">Début</td>
-                    <td class="text-center"><?php echo $event->getDateStart()?></td>
+                    <td class="text-center strong"><?php echo $event->getDateStart()?></td>
                     <form method="post" action="../traitement/actionEvent.php">
                         <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
                         <input name="action" type="hidden" value="datesPut">
@@ -113,7 +113,7 @@ $allClientele = $entities->getAllClientele();
                 </tr>
                 <tr>
                     <td class="text-center">Fin</td>
-                    <td class="text-center"><?php echo $event->getDateEnd()?></td>
+                    <td class="text-center strong"><?php echo $event->getDateEnd()?></td>
                     <td class="text-center"><input type="datetime-local" class="form-control" name="dateEnd"></td>
                     </form>
                 </tr>
@@ -121,7 +121,7 @@ $allClientele = $entities->getAllClientele();
                 <tr>
                     <td rowspan="4" class="text-center">Place</td>
                     <td class="text-center">Country</td>
-                    <td class="text-center"><?php echo $event->getCountry()?></td>
+                    <td class="text-center strong"><?php echo $event->getCountry()?></td>
                     <form method="post" action="../traitement/actionEvent.php">
                         <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
                         <input name="action" type="hidden" value="placePut">
@@ -130,17 +130,17 @@ $allClientele = $entities->getAllClientele();
                 </tr>
                 <tr>
                     <td class="text-center">City</td>
-                    <td class="text-center"><?php echo $event->getCity()?></td>
+                    <td class="text-center strong"><?php echo $event->getCity()?></td>
                     <td class="text-center"><input type="text" class="form-control" name="city"></td>
                 </tr>
                 <tr>
                     <td class="text-center">Postal Code</td>
-                    <td class="text-center"><?php echo $event->getPostalCode()?></td>
+                    <td class="text-center strong"><?php echo $event->getPostalCode()?></td>
                     <td class="text-center"><input type="number" class="form-control" name="postalCode"></td>
                 </tr>
                 <tr>
                     <td class="text-center">Adresse</td>
-                    <td class="text-center"><?php echo $event->getAdresse()?></td>
+                    <td class="text-center strong"><?php echo $event->getAdresse()?></td>
                     <td class="text-center"><input type="text" class="form-control" name="adresse"></td>
                     </form>
                 </tr>
@@ -148,7 +148,7 @@ $allClientele = $entities->getAllClientele();
                 </tbody>
             </table>
 
-            <table class="table table-bordered table-striped table-condensed table-responsive">
+            <table class="table table-bordered table-striped table-condensed">
                 <caption>
                     <h2 class="text-center">Autres information</h2>
                 </caption>

@@ -1,15 +1,11 @@
 body{
-    background-color: #642b1c;
+    background-color: #DB901A;
 }
 
 html {
     height: 100.1%;
 }
 
-form{
-
-}
-
-h3{
-    color: white;
+img{
+    max-width: 100%;
 }
