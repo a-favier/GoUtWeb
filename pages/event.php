@@ -24,139 +24,235 @@ $allClientele = $entities->getAllClientele();
 
 
 ?>
-    <div class="container-fluid ">
-        <div class="well table-responsive">
-            <h2 class="text-center">Nom de l'événement</h2>
+<div class="well table-responsive">
+    <h2 class="text-center">Nom de l'événement</h2>
 
+    <div class="row col-lg-12">
+        <div class="col-lg-5 col-lg-offset-1">
             <table class="table table-bordered table-striped table-condensed">
                 <tbody>
-                    <tr>
-                        <td class="text-center" width="50%">
-                            <form method="post" action="../traitement/actionEvent.php">
-                                <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                                <input name="action" type="hidden" value="activePut">
-                                <h4 class="text-center">Etat de l'événement</h4>
-                                <select name="actif" class="col-lg-offset-2 col-lg-6 text-center">
-                                    <?php
-                                    if($event->isActive()){
-                                        echo "<option value='1' selected>L'événement est actif</option><option value='0'>L'événement est désactiver</option>";
-                                    }else{
-                                        echo "<option value='1'>L'événement est actif</option><option value='0' selected>L'événement est désactiver</option>";
-                                    }
-                                    ?>
-                                </select>
-                                <button type="submit" class="btn btn-primary btn-success col-lg-2"><span class="glyphicon glyphicon-ok"></span> Valider</button>
-                            </form>
-                        </td>
-                        <td class="text-center" width="50%">
-                            <form method="post" action="../traitement/actionEvent.php">
-                                <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                                <input name="action" type="hidden" value="bookingPut">
-                                <h4 class="text-center">Reservation</h4>
-                                <select name="booking" class="col-lg-offset-2 col-lg-6 text-center">
-                                    <?php
-                                    if($event->isBooking()){
-                                        echo "<option value='1' selected>L'événement est sur reservation</option><option value='0'>L'événement n'est pas sur reservation</option>";
-                                    }else{
-                                        echo "<option value='1'>L'événement est sur reservation</option><option value='0' selected>L'événement n'est pas sur reservation</option>";
-                                    }
-                                    ?>
-                                </select>
-                                <button type="submit" class="btn btn-primary btn-success col-lg-2"><span class="glyphicon glyphicon-ok"></span> Valider</button>
-                            </form>
-                        </td>
+                <tr>
+                    <td class="text-center" width="50%">
+                        <form method="post" action="../traitement/actionEvent.php">
+                            <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                            <input name="action" type="hidden" value="activePut">
+                            <h4 class="text-center">Etat de l'événement</h4>
+                            <select name="actif" class="col-lg-offset-2 col-lg-6 text-center">
+                                <?php
+                                if($event->isActive()){
+                                    echo "<option value='1' selected>L'événement est actif</option><option value='0'>L'événement est désactiver</option>";
+                                }else{
+                                    echo "<option value='1'>L'événement est actif</option><option value='0' selected>L'événement est désactiver</option>";
+                                }
+                                ?>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-success col-lg-2"><span class="glyphicon glyphicon-ok"></span> Valider</button>
+                        </form>
+                    </td>
+                </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="col-lg-5">
+            <table class="table table-bordered table-striped table-condensed">
+                <tbody>
+                <tr>
+                    <td class="text-center" width="50%">
+                        <form method="post" action="../traitement/actionEvent.php">
+                            <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                            <input name="action" type="hidden" value="bookingPut">
+                            <h4 class="text-center">Reservation</h4>
+                            <select name="booking" class="col-lg-offset-2 col-lg-6 text-center">
+                                <?php
+                                if($event->isBooking()){
+                                    echo "<option value='1' selected>L'événement est sur reservation</option><option value='0'>L'événement n'est pas sur reservation</option>";
+                                }else{
+                                    echo "<option value='1'>L'événement est sur reservation</option><option value='0' selected>L'événement n'est pas sur reservation</option>";
+                                }
+                                ?>
+                            </select>
+                            <button type="submit" class="btn btn-primary btn-success col-lg-2"><span class="glyphicon glyphicon-ok"></span> Valider</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
+    <div class="row col-lg-offset-2 col-lg-7">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th class="text-center col-lg-3">Catgorie</th>
+                <th class="text-center col-lg-3">Libel</th>
+                <th class="text-center strong col-lg-5">Valeur</th>
+                <th class="text-center col-lg-1">Modification</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="2" class="text-center">Générale</td>
+                <td class="text-center">Name</td>
+                <td class="text-center strong">
+                    <p id="nameText"><?php echo $event->getName()?></p>
+                    <div id="nameFrom">
+                        <form method="post" action="../traitement/actionEvent.php"  class="form-horizontal col-lg-12">
+                            <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                            <input name="action" type="hidden" value="namePut">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="name" class="col-lg-2 control-label">Name </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="name"  value="<?php echo $event->getName()?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary pull-right" id="nameButton"><span class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">Description</td>
+                <td class="text-center strong">
+                    <p id="descriptionText"><?php echo $event->getDescription()?></p>
+                    <div id="descriptionForm">
+                        <form method="post" action="../traitement/actionEvent.php"  class="form-horizontal col-lg-12">
+                            <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                            <input name="action" type="hidden" value="descriptionPut">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="description" class="col-lg-2 control-label">Description </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" rows="1" name="description"  value="<?php echo $event->getDescription()?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary pull-right" id="descriptionButton"><span class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="text-center">Dates</td>
+                <td class="text-center">Début<br />Fin</td>
+                <td class="text-center strong">
+                    <p id="dateText"><?php echo $event->getDateStart()?><br /><?php echo $event->getDateEnd()?></p>
+                    <div id="dateForm">
+                        <form method="post" action="../traitement/actionEvent.php" class="form-horizontal col-lg-12">
+                            <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                            <input name="action" type="hidden" value="datesPut">
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="dateEnd" class="col-lg-2 control-label">Date start </label>
+                                    <div class="col-lg-10">
+                                        <input type="datetime-local" class="form-control" name="dateEnd">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="dateStart" class="col-lg-2 control-label">Date end </label>
+                                    <div class="col-lg-10">
+                                        <input type="datetime-local" class="form-control" name="dateStart">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary pull-right" id="dateButton"><span class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="text-center">Place</td>
+                <td class="text-center">Country<br />City<br />Postal Code<br />Adresse</td>
+                <td class="strong">
+                    <p class="text-center" id="placeText"><?php echo $event->getCountry()?><br /><?php echo $event->getCity()?><br /><?php echo $event->getPostalCode()?><br /><?php echo $event->getAdresse()?></p>
+                    <div id="placeFrom">
+                        <form method="post" action="../traitement/actionEvent.php" class="form-horizontal col-lg-12">
+                            <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                            <input name="action" type="hidden" value="placePut">
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="country" class="col-lg-2 control-label">Country </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="country" value="<?php echo $event->getCountry()?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="city" class="col-lg-2 control-label">City </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="city" value="<?php echo $event->getCity()?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="postalCode" class="col-lg-2 control-label">Postal Code </label>
+                                    <div class="col-lg-10">
+                                        <input type="number" class="form-control" name="postalCode" value="<?php echo $event->getPostalCode()?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="adresse" class="col-lg-2 control-label">Adresse </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="adresse" value="<?php echo $event->getAdresse()?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-pencil"></span> Modifier</button>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-primary pull-right" id="placeButton"><span class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row col-lg-12">
+        <div class="col-lg-4">
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
                 <tr>
-                    <th width="10%" class="text-center">Catgorie</th>
-                    <th width="10%" class="text-center">Libel</th>
-                    <th width="35%" class="text-center strong">Valeur</th>
-                    <th width="35%" class="text-center">Modification</th>
-                    <th width="10%" class="text-center">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td rowspan="2" class="text-center">Générale</td>
-                    <td class="text-center">Name</td>
-                    <td class="text-center strong"><?php echo $event->getName()?></td>
-                    <form method="post" action="../traitement/actionEvent.php">
-                        <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                        <input name="action" type="hidden" value="namePut">
-                        <td class="text-center"><input type="text" class="form-control" name="name"></td>
-                        <td class="text-center"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></td>
-                    </form>
-                </tr>
-                <tr>
-                    <td class="text-center">Description</td>
-                    <td class="text-center strong"><?php echo $event->getDescription()?></td>
-                    <form method="post" action="../traitement/actionEvent.php">
-                        <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                        <input name="action" type="hidden" value="descriptionPut">
-                        <td class="text-center"><textarea class="form-control" rows="3" name="description"></textarea></td>
-                        <td class="text-center"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></td>
-                    </form>
-                </tr>
-
-                <tr>
-                    <td rowspan="2" class="text-center">Dates</td>
-                    <td class="text-center">Début</td>
-                    <td class="text-center strong"><?php echo $event->getDateStart()?></td>
-                    <form method="post" action="../traitement/actionEvent.php">
-                        <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                        <input name="action" type="hidden" value="datesPut">
-                        <td class="text-center"><input type="datetime-local" class="form-control" name="dateStart"></td>
-                        <td class="text-center" rowspan="2"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></td>
-                </tr>
-                <tr>
-                    <td class="text-center">Fin</td>
-                    <td class="text-center strong"><?php echo $event->getDateEnd()?></td>
-                    <td class="text-center"><input type="datetime-local" class="form-control" name="dateEnd"></td>
-                    </form>
-                </tr>
-
-                <tr>
-                    <td rowspan="4" class="text-center">Place</td>
-                    <td class="text-center">Country</td>
-                    <td class="text-center strong"><?php echo $event->getCountry()?></td>
-                    <form method="post" action="../traitement/actionEvent.php">
-                        <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                        <input name="action" type="hidden" value="placePut">
-                        <td class="text-center"><input type="text" class="form-control" name="country"></td>
-                        <td class="text-center" rowspan="4"><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Modifier</button></td>
-                </tr>
-                <tr>
-                    <td class="text-center">City</td>
-                    <td class="text-center strong"><?php echo $event->getCity()?></td>
-                    <td class="text-center"><input type="text" class="form-control" name="city"></td>
-                </tr>
-                <tr>
-                    <td class="text-center">Postal Code</td>
-                    <td class="text-center strong"><?php echo $event->getPostalCode()?></td>
-                    <td class="text-center"><input type="number" class="form-control" name="postalCode"></td>
-                </tr>
-                <tr>
-                    <td class="text-center">Adresse</td>
-                    <td class="text-center strong"><?php echo $event->getAdresse()?></td>
-                    <td class="text-center"><input type="text" class="form-control" name="adresse"></td>
-                    </form>
-                </tr>
-
-                </tbody>
-            </table>
-
-            <table class="table table-bordered table-striped table-condensed">
-                <caption>
-                    <h2 class="text-center">Autres information</h2>
-                </caption>
-                <thead>
-                <tr>
-                    <th width="33%" class="text-center">Clientele</th>
-                    <th width="33%" class="text-center">Categorie</th>
-                    <th width="34%" class="text-center">Tarif</th>
+                    <th class="text-center">Clientele</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -178,42 +274,7 @@ $allClientele = $entities->getAllClientele();
                             </form>
                         </ul>
                     </td>
-
-                    <td class="text-center">
-                        <ul class="list-group">
-                            <form method="post" action="../traitement/actionEvent.php">
-                                <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                                <input name="action" type="hidden" value="categorieDel">
-                                <?php
-                                foreach ($event->getListCategorie() as $c){
-                                    echo "<li class='list-group-item'>";
-                                    echo "<button type='submit' class='btn-xs btn-danger pull-right'><span class='fa fa-times'></span></button>";
-                                    echo $c->getName();
-                                    echo "<input name='categorieId' type='hidden' value='".$c->getId()."'>";
-                                    echo "</li>";
-                                }
-                                ?>
-                            </form>
-                        </ul>
-                    </td>
-
-                    <td class="text-center">
-                        <ul class="list-group">
-                            <form method="post" action="../traitement/actionEvent.php">
-                                <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
-                                <input name="action" type="hidden" value="tarifDel">
-                                <?php
-                                foreach ($event->getListTarif() as $t){
-                                    echo "<li class='list-group-item'>";
-                                    echo "<button type='submit' class='btn-xs btn-danger pull-right'><span class='fa fa-times'></span></button>";
-                                    echo $t->getName() . " : " . $t->getPrice() . " €";
-                                    echo "<input name='tarifId' type='hidden' value='".$t->getId()."'>";
-                                    echo "</li>";
-                                }
-                                ?>
-                            </form>
-                        </ul>
-                    </td>
+                </tr>
                 <tr>
                     <td class="text-center">
                         <form method="post" action="../traitement/actionEvent.php">
@@ -231,7 +292,38 @@ $allClientele = $entities->getAllClientele();
                             <button type="submit" class="btn btn-primary btn-success col-lg-2"><span class="glyphicon glyphicon-ok"></span> Valider</button>
                         </form>
                     </td>
-
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" col-lg-4">
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th class="text-center">Categorie</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <ul class="list-group">
+                            <form method="post" action="../traitement/actionEvent.php">
+                                <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                                <input name="action" type="hidden" value="categorieDel">
+                                <?php
+                                foreach ($event->getListCategorie() as $c){
+                                    echo "<li class='list-group-item'>";
+                                    echo "<button type='submit' class='btn-xs btn-danger pull-right'><span class='fa fa-times'></span></button>";
+                                    echo $c->getName();
+                                    echo "<input name='categorieId' type='hidden' value='".$c->getId()."'>";
+                                    echo "</li>";
+                                }
+                                ?>
+                            </form>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
                     <td class="text-center">
                         <form method="post" action="../traitement/actionEvent.php">
                             <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
@@ -248,7 +340,38 @@ $allClientele = $entities->getAllClientele();
                             <button type="submit" class="btn btn-primary btn-success col-lg-2"><span class="glyphicon glyphicon-ok"></span> Valider</button>
                         </form>
                     </td>
-
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th class="text-center">Tarif</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center">
+                        <ul class="list-group">
+                            <form method="post" action="../traitement/actionEvent.php">
+                                <input name="eventId" type="hidden" value="<?php echo $event->getId() ?>">
+                                <input name="action" type="hidden" value="tarifDel">
+                                <?php
+                                foreach ($event->getListTarif() as $t){
+                                    echo "<li class='list-group-item'>";
+                                    echo "<button type='submit' class='btn-xs btn-danger pull-right'><span class='fa fa-times'></span></button>";
+                                    echo $t->getName() . " : " . $t->getPrice() . " €";
+                                    echo "<input name='tarifId' type='hidden' value='".$t->getId()."'>";
+                                    echo "</li>";
+                                }
+                                ?>
+                            </form>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
                     <td class="text-center">
                         <form method="post" action="../traitement/actionEvent.php" class="form-horizontal">
                             <h4 class="text-center">Ajouter un tarif</h4>
@@ -256,13 +379,13 @@ $allClientele = $entities->getAllClientele();
                             <input name="action" type="hidden" value="tarifAdd">
 
                             <div class="form-group">
-                                <label class="control-label col-lg-2" for="libel">Libel :</label>
+                                <label class="control-label col-lg-2" for="libel">Libel </label>
                                 <div class="col-lg-8">
                                     <input type="text" class="form-control" name="libel">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-2 control-label" for="appendedtext">Prix : </label>
+                                <label class="col-lg-2 control-label" for="appendedtext">Prix </label>
                                 <div class="col-lg-8">
                                     <div class="input-group">
                                         <input name="prix" class="form-control" type="text">
@@ -278,6 +401,7 @@ $allClientele = $entities->getAllClientele();
             </table>
         </div>
     </div>
+</div>
 <?php
 require  ('../frame/bottom.php');
 ?>

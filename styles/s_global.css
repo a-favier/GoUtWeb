@@ -15,6 +15,7 @@ body{
     z-index: 10;
 }
 
+
 .table > tbody > tr > td {
     vertical-align: middle;
 }
@@ -29,4 +30,12 @@ select{
 
 .strong{
     font-weight: bold;
+}
+
+#placeFrom, #dateForm, #descriptionForm, #nameFrom{
+    display: none;
+}
+
+div{
+    margin: auto;
 }
